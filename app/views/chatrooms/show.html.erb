@@ -1,10 +1,21 @@
-<h1>#<%= @chatroom.name %></h1>
-<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-  <% @chatroom.messages.each do |message| %>
-    <%= render 'messages/message', message: message %>
-  <% end %>
-</div>
+<div class="container">
 
-<%= simple_form_for [@chatroom, @message] do |f| %>
-  <%= f.input :content, label: false, placeholder: "What's in your mind right now?" %>
-<% end %>
+  <h1>#<%= @chatroom.name %></h1>
+  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+    <% @chatroom.messages.each do |message| %>
+    
+      <% if message.user == current_user %>
+          <%= render 'messages/message', message: message, css_class: 'sent-message' %>
+      <% else %>
+          <%= render 'messages/message', message: message, css_class: 'received-message' %>
+      <% end %>
+    
+    <% end %>
+  </div>
+
+  <%= simple_form_for [@chatroom, @message] do |f| %>
+    <%= f.input :content, label: false, placeholder: "What's in your mind right now?" %>
+  <% end %>
+
+
+</div>
