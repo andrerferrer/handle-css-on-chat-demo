@@ -13,7 +13,7 @@
     <% end %>
   </div>
 
-  <%= simple_form_for [@chatroom, @message] do |f| %>
+  <%= simple_form_for [@chatroom, @message], remote: true do |f| %>
     <%= f.input :content, label: false, placeholder: "What's in your mind right now?" %>
   <% end %>
 
