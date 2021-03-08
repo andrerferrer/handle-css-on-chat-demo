@@ -1,58 +1,33 @@
 ## Goal
-This is a demo app to teach how to implement a chat in RoR.
-We'll be using WebSockets and ActionCable
+This is a demo app to teach how to implement a chat in Ruby on Rails with different CSS for each message.
 
 [You can also check my other demos](https://github.com/andrerferrer/dedemos/blob/master/README.md#ded%C3%A9mos).
 
-## How to
-### 1. Implement the Chat itself
-#### 1.1. Create a ChatRoom model and a Message model referencing User and ChatRoom
+This demo was created from [this one](https://github.com/andrerferrer/chat-demo#goal).
 
-`rails g model ChatRoom name`
+## [How to](https://github.com/andrerferrer/handle-css-on-chat-demo/commits/master)
 
-`rails g model message chatroom:references content user:references`
+1. [Add some style to the messages](https://github.com/andrerferrer/handle-css-on-chat-demo/commit/7d759a705435584c56dc2585599d5a38e469ed6e)
+1. [Differ messages with bg color (if you want to)](https://github.com/andrerferrer/handle-css-on-chat-demo/commit/4b1f46d58cd9231e598a0a87ecb3b633a8c63ba5)
+1. [Make the css_class optional](https://github.com/andrerferrer/handle-css-on-chat-demo/commit/af2fa723ca0f685db2553a9ee304b754fb6c29c2)
+1. [add users ids to the HTML](https://github.com/andrerferrer/handle-css-on-chat-demo/commit/3599cd75ff58bc3959d70e80cd30234bd96f07ae)
+1. [Handle users ids in the JS](https://github.com/andrerferrer/handle-css-on-chat-demo/commit/394195f379b3975d0ebfb0bbd8229b52c205ad70)
 
-After this, we'll need to implement the relationships in the models.
+### If you want to check it locally
+```sh
+repo_name="handle-css-on-chat-demo"
+gh_repository="git@github.com:andrerferrer/$repo_name.git"
+git clone $gh_repository demo
+cd demo
+bundle install
+yarn install
+rails db:create db:migrate db:seed
+rails s
 
-`rails g controller chatrooms show`
-
-`rails g controller messages create`
-
-We will need to implement the views and the controllers properly after this.
-Right now, we already have chatrooms working!
-
-#### 1.2. Implement the Websocket
-
-* generate the channel
-`rails g channel chatroom`
-
-* stream for it when the subscription happens
-```ruby
-# app/channels/chatroom_channel.rb
-  def subscribed
-    stream_for Chatroom.find params[:id]
-  end
+# now you can go to http://localhost:3000/ and check it out
 ```
 
-* Prepare the JS to handle it accordingly
 
-TBD. For now, check [how to implement it](https://github.com/andrerferrer/chat-demo/blob/master/app/javascript/channels/init_chatroom.js) and [how to make it run](https://github.com/andrerferrer/chat-demo/blob/master/app/javascript/packs/application.js)
+And we're good to go 🤓
 
-#### 1.3. Push it to production!
-
-Under Construction
-```
-                           ___
-                            {-)   |\
-                       [m,].-"-.   /
-      [][__][__]         \(/\__/\)/
-      [__][__][__][__]~~~~  |  |
-      [][__][__][__][__][] /   |
-      [__][__][__][__][__]| /| |
-      [][__][__][__][__][]| || |  ~~~~
-      [__][__][__][__][__]__,__,  \__/
-```
-[ascii art source](https://asciiart.website/index.php?art=people/occupations/builders)
-
-
-## Troubleshooting
+Good Luck and Have Fun
