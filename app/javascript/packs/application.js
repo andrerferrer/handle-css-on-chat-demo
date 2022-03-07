@@ -33,3 +33,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initChatroom();
 });
+
+import "controllers"
