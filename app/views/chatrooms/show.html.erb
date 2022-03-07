@@ -1,19 +1,19 @@
-<div class="container">
+<div data-controller='chat' class="container">
 
   <h1>#<%= @chatroom.name %></h1>
-  <div id="messages" data-chatroom-id="<%= @chatroom.id %>" data-current-user-id="<%= current_user.id %>">
+  <div id="messages" data-chat-target='messages' data-chatroom-id="<%= @chatroom.id %>" data-current-user-id="<%= current_user.id %>">
     <% @chatroom.messages.each do |message| %>
     
       <% if message.user == current_user %>
-          <%= render 'messages/message', message: message, css_class: 'sent-message' %>
+        <%= render 'messages/message', message: message, css_class: 'sent-message' %>
       <% else %>
-          <%= render 'messages/message', message: message, css_class: 'received-message' %>
+        <%= render 'messages/message', message: message, css_class: 'received-message' %>
       <% end %>
     
     <% end %>
   </div>
 
-  <%= simple_form_for [@chatroom, @message], remote: true do |f| %>
+  <%= simple_form_for [@chatroom, @message], data: { chat_target: 'form' } do |f| %>
     <%= f.input :content, label: false, placeholder: "What's in your mind right now?" %>
   <% end %>
 

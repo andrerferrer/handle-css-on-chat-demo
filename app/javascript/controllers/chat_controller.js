@@ -2,10 +2,12 @@ import { Controller } from "stimulus"
 import consumer from '../channels/consumer'
 
 export default class extends Controller {
+  static targets = ['form', 'messages']
+
   connect() {
     const stimulusController = this;
     // find my messages DOM element
-    const messages = this.element;
+    const messages = this.messagesTarget;
     // if it exists, we will create the subscription
     if (messages) {
       // find the chatroom id
@@ -33,15 +35,16 @@ export default class extends Controller {
 
     // put the message HTML inside
     message.innerHTML = messageHTML;
-
     // if the message is from the sender,
-    if (message.dataset.senderId === currentUserId) {
+    if (message.firstChild.dataset.senderId === currentUserId) {
       // add the sender CSS
       message.firstChild.classList.add('sent-message');
     } else {
       // Else, add the receiver css
       message.firstChild.classList.add('received-message');
     }
+    messages.scrollTo(0, messages.scrollHeight)
+    this.formTarget.reset()
 
     // insert the element in the DOM
     messages.insertAdjacentElement('beforeend', message);
