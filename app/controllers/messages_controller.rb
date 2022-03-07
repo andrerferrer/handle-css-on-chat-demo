@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     @message.chatroom = @chatroom
 
     if @message.save
-      redirect_to chatroom_path(@chatroom)
+      # redirect_to chatroom_path(@chatroom)
       broadcast(@chatroom, @message)
     else
       render 'chatrooms/show'
