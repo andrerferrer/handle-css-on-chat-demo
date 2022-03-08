@@ -13,6 +13,14 @@ This demo was created from [this one](https://github.com/andrerferrer/chat-demo#
 1. [add users ids to the HTML](https://github.com/andrerferrer/handle-css-on-chat-demo/commit/3599cd75ff58bc3959d70e80cd30234bd96f07ae)
 1. [Handle users ids in the JS](https://github.com/andrerferrer/handle-css-on-chat-demo/commit/394195f379b3975d0ebfb0bbd8229b52c205ad70)
 
+## Update with Stimulus!
+3. [install stimulus](https://github.com/andrerferrer/handle-css-on-chat-demo/commit/4480ba71f4cd340c9b78f71ef8b9dce35c590f5e)
+4. [remove old js code](https://github.com/andrerferrer/handle-css-on-chat-demo/commit/9ed546b5deb93db5c3749a7ef35a070f94203be0)
+5. [create a new stimulus controller instead](https://github.com/andrerferrer/handle-css-on-chat-demo/commit/ca1b53518362e935196ebe29bd8f9f48be310bde)
+6. [remove redirect from the messages controller (avoid two messages)](https://github.com/andrerferrer/handle-css-on-chat-demo/commit/1b03fe942e8fdad7fefd3613f938a1295b2ac114)
+7. [improve the controller with resetting and scrolling](https://github.com/andrerferrer/handle-css-on-chat-demo/commit/fe85ca115dbb3b71942ef67fc92147563bfb374d)
+
+
 ### If you want to check it locally
 ```sh
 repo_name="handle-css-on-chat-demo"
